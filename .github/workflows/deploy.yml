@@ -44,12 +44,15 @@ jobs:
     - name: update kubeconfig
       run: aws eks update-kubeconfig --name hello-world-eks --region us-east-2
 
-    - name: Set up kubectl
-      uses: aws-actions/eks-credentials@v1
-      with:
-        cluster-name: hello-world-eks
 
-    - name: Apply manifests
-      run: |
-        kubectl apply -f pod.yaml
-        kubectl apply -f svc-lb.yaml
+    - name: Deploy to EKS
+      uses: cancue/eks-action@v0.0.2
+      env:
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: us-east-2
+        cluster_name: hello-world-eks
+      with:
+        args: |
+          kubectl apply -f pod.yaml
+          kubectl apply -f svc-lb.yaml
