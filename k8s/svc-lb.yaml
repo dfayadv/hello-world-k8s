@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-svc
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:677276119919:certificate/8815b9ac-9ea4-4363-88a7-1d2ad14b4611
+spec:
+  selector:
+    app: hello-world
+  ports:
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 80
+  type: LoadBalancer
