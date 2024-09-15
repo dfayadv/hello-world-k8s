@@ -42,7 +42,7 @@ jobs:
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
     - name: update kubeconfig
-      run: aws eks update-kubeconfig --name TODO(DANIEL)ADD_CLUSTER_NAME --region us-east-2
+      run: aws eks update-kubeconfig --name hello-world-eks --region us-east-2
 
     - name: deploy to EKS
       run: |
