@@ -44,7 +44,12 @@ jobs:
     - name: update kubeconfig
       run: aws eks update-kubeconfig --name hello-world-eks --region us-east-2
 
-    - name: deploy to EKS
+    - name: Set up kubectl
+      uses: aws-actions/eks-credentials@v1
+      with:
+        cluster-name: hello-world-eks
+
+    - name: Apply manifests
       run: |
         kubectl apply -f pod.yaml
         kubectl apply -f svc-lb.yaml
