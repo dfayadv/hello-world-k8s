@@ -54,4 +54,5 @@ jobs:
         cluster_name: hello-world-eks
       with:
         args: |
-          kubectl get pods
+          kubectl apply -f k8s/pod.yaml
+          kubectl apply -f k8s/svc-lb.yaml
