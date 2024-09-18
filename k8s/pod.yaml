@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: hello-world-container
-    image: dfayad/k8s-hello-world:0.0.1
+    image: dfayad/k8s-hello-world:latest
     imagePullPolicy: Always
     ports:
       - containerPort: 80
