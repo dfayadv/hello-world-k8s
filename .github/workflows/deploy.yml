@@ -63,5 +63,6 @@ jobs:
         cluster_name: hello-world-eks
       with:
         args: |
+          kubectl delete pod hello-world-pod
           kubectl apply -f k8s/pod.yaml
           kubectl apply -f k8s/svc-lb.yaml
