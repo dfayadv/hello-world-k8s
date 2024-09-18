@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
   - name: hello-world-container
-    image: dfayad/k8s-hello-world:0.0.4
+    image: dfayad/k8s-hello-world:latest
     ports:
       - containerPort: 80
